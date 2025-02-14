@@ -8,9 +8,9 @@
 #define MAX_PATH_STACK_SIZE 256
 #define MAX_LENGTH 256
 
-int isAlphaNumeric(char c)
+int isValidDirectoryChar(char c)
 {
-    if (c == 45 || c == 95 || c >= 65 && c <= 90 || c >= 97 && c <= 122 || c >= 48 && c <= 57)
+    if (c == 45 || c == 95 || c >= 65 && c <= 90 || c >= 97 && c <= 122 || c >= 48 && c <= 57 || c == 40 || c == 41 || c == 32 || c == 126 || c == 46)
     {
         return 1;
     }
@@ -52,12 +52,12 @@ int main(int argc, char *argv[])
             {
                 tab_count++;
             }
-            else if (isAlphaNumeric(c) == 1 && line[i + 1] == '\0')
+            else if (isValidDirectoryChar(c) == 1 && line[i + 1] == '\0')
             {
                 dirname[dirname_idx] = c;
                 dirname[dirname_idx + 1] = '\0';
             }
-            else if (isAlphaNumeric(c) == 1)
+            else if (isValidDirectoryChar(c) == 1)
             {
                 dirname[dirname_idx] = c;
                 dirname_idx++;
